@@ -4,7 +4,10 @@ public class Nouveau {
 	public Nouveau() {
 		
 	}
-	public void nouv() {
+	public String nouv() {
+		String saveFilePath = "";
 		
+		
+		return saveFilePath;
 	}
 }

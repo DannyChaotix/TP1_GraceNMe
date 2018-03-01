@@ -4,7 +4,10 @@ public class Ouvrir {
 	public Ouvrir() {
 		
 	}
-	public void open() {
+	public String open() {
+		String saveFilePath = "";
 		
+		
+		return saveFilePath; 
 	}
 }

@@ -21,6 +21,7 @@ public class BarreMenu extends JMenuBar {
 
 	private JMenuItem optionAide = new JMenuItem(" Afficher l'aide");
 	private JMenuItem optionAProp = new JMenuItem(" � propos de votre nom de logiciel");
+	private String saveFilePath = "";
 
 	public BarreMenu(JPanel panneau) {
 		JMenu menuFichier = new JMenu("Fichier");
@@ -57,22 +58,22 @@ public class BarreMenu extends JMenuBar {
 
 			if (e.getSource() == optionNouv) {
 				Nouveau nouveau = new Nouveau();
-				nouveau.nouv();
+				saveFilePath = nouveau.nouv();
 			} else if (e.getSource() == optionEnreg) {
 				Enregistrer enregistrer = new Enregistrer();
-				enregistrer.enreg();
+				enregistrer.enreg(saveFilePath);
 			} else if (e.getSource() == optionEnregSous) {
 				Enregistrer_Sous enregistrerSous = new Enregistrer_Sous();
-				enregistrerSous.enreg();
+				saveFilePath = enregistrerSous.enreg();
 			} else if (e.getSource() == optionOuv) {
 				Ouvrir ouvrir = new Ouvrir();
-						ouvrir.open();
+				saveFilePath = ouvrir.open();
 			} else if (e.getSource() == optionQuit) {
-				Quitter quitter=new Quitter();
+				Quitter quitter = new Quitter();
 				quitter.quit();
 
 			} else if (e.getSource() == optionAide) {
-				
+
 			} else if (e.getSource() == optionAProp) {
 				A_Propos aPropos = new A_Propos();
 				aPropos.list();
