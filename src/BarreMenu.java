@@ -56,21 +56,26 @@ public class BarreMenu extends JMenuBar {
 		public void actionPerformed(ActionEvent e) {
 
 			if (e.getSource() == optionNouv) {
-
+				Nouveau nouveau = new Nouveau();
+				nouveau.nouv();
 			} else if (e.getSource() == optionEnreg) {
-
+				Enregistrer enregistrer = new Enregistrer();
+				enregistrer.enreg();
 			} else if (e.getSource() == optionEnregSous) {
-
+				Enregistrer_Sous enregistrerSous = new Enregistrer_Sous();
+				enregistrerSous.enreg();
 			} else if (e.getSource() == optionOuv) {
-
+				Ouvrir ouvrir = new Ouvrir();
+						ouvrir.open();
 			} else if (e.getSource() == optionQuit) {
 				Quitter quitter=new Quitter();
 				quitter.quit();
 
 			} else if (e.getSource() == optionAide) {
-
+				
 			} else if (e.getSource() == optionAProp) {
-
+				A_Propos aPropos = new A_Propos();
+				aPropos.list();
 			}
 
 		}
