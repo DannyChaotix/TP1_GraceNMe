@@ -20,7 +20,7 @@ public class BarreMenu extends JMenuBar {
 	private JMenuItem optionQuit = new JMenuItem(" Quitter");
 
 	private JMenuItem optionAide = new JMenuItem(" Afficher l'aide");
-	private JMenuItem optionAProp = new JMenuItem(" À propos de votre nom de logiciel");
+	private JMenuItem optionAProp = new JMenuItem(" ï¿½ propos de votre nom de logiciel");
 
 	public BarreMenu(JPanel panneau) {
 		JMenu menuFichier = new JMenu("Fichier");
