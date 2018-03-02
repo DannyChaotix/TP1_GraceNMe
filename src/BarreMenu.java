@@ -2,6 +2,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.util.ArrayList;
 
 import javax.swing.JFileChooser;
 import javax.swing.JMenu;
@@ -67,18 +68,34 @@ public class BarreMenu extends JMenuBar {
 			if (e.getSource() == optionNouv) {
 				Nouveau nouveau = new Nouveau();
 				saveFilePath = nouveau.nouv();
+				panneau.setListe(new ArrayList<Forme>());
+				
+				
 			} else if (e.getSource() == optionEnreg) {
 				Enregistrer enregistrer = new Enregistrer();
-				enregistrer.enreg(saveFilePath,panneau);
+				try {
+					enregistrer.enreg(saveFilePath,panneau);
+				} catch (IOException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
 			} else if (e.getSource() == optionEnregSous) {
 				Enregistrer_Sous enregistrerSous = new Enregistrer_Sous();
-				saveFilePath = enregistrerSous.enreg(panneau);
+				try {
+					saveFilePath = enregistrerSous.enreg(panneau);
+				} catch (IOException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
 			} else if (e.getSource() == optionOuv) {
 				Ouvrir ouvrir = new Ouvrir();
 				JFileChooser choixFichier = new JFileChooser();
 				if(choixFichier.showOpenDialog(panneau) == JFileChooser.APPROVE_OPTION) {
 				
-				PanDessin panTemp = ouvrir.open(choixFichier);
+				PanDessin panTemp = null;
+				
+					panTemp = ouvrir.open(choixFichier);
+				
 				panneau.setListe(panTemp.getListe());
 				}
 				
