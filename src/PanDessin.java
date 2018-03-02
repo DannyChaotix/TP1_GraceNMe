@@ -73,6 +73,16 @@ public class PanDessin extends JPanel implements MouseListener, MouseMotionListe
 			
 		}
 
+		public ArrayList<Forme> getListe() {
+			return liste;
+		}
+
+
+		public void setListe(ArrayList<Forme> liste) {
+			this.liste = liste;
+		}
+
+
 		@Override
 		public void mouseMoved(MouseEvent arg0) {
 			// TODO Auto-generated method stub

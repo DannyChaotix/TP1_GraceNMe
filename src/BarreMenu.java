@@ -1,9 +1,13 @@
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.FileNotFoundException;
+import java.io.IOException;
 
+import javax.swing.JFileChooser;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 public class BarreMenu extends JMenuBar {
@@ -22,10 +26,14 @@ public class BarreMenu extends JMenuBar {
 	private JMenuItem optionAide = new JMenuItem(" Afficher l'aide");
 	private JMenuItem optionAProp = new JMenuItem(" � propos de votre nom de logiciel");
 	private String saveFilePath = "";
+	private PanDessin panneau;
 
-	public BarreMenu(JPanel panneau) {
+	public BarreMenu(PanDessin panneau) {
 		JMenu menuFichier = new JMenu("Fichier");
 		JMenu menuAide = new JMenu("?");
+		
+		this.panneau = panneau;
+		
 
 		ActionListener1 listener1 = new ActionListener1();
 
@@ -61,13 +69,20 @@ public class BarreMenu extends JMenuBar {
 				saveFilePath = nouveau.nouv();
 			} else if (e.getSource() == optionEnreg) {
 				Enregistrer enregistrer = new Enregistrer();
-				enregistrer.enreg(saveFilePath);
+				enregistrer.enreg(saveFilePath,panneau);
 			} else if (e.getSource() == optionEnregSous) {
 				Enregistrer_Sous enregistrerSous = new Enregistrer_Sous();
-				saveFilePath = enregistrerSous.enreg();
+				saveFilePath = enregistrerSous.enreg(panneau);
 			} else if (e.getSource() == optionOuv) {
 				Ouvrir ouvrir = new Ouvrir();
-				saveFilePath = ouvrir.open();
+				JFileChooser choixFichier = new JFileChooser();
+				if(choixFichier.showOpenDialog(panneau) == JFileChooser.APPROVE_OPTION) {
+				
+				PanDessin panTemp = ouvrir.open(choixFichier);
+				panneau.setListe(panTemp.getListe());
+				}
+				
+
 			} else if (e.getSource() == optionQuit) {
 				Quitter quitter = new Quitter();
 				quitter.quit();
